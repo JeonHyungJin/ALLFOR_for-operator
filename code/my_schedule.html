@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+</head>
+
+<body>
+  <header>
+    <button type="button" class="d-secondaryButton" id="sign-button">
+     <div>
+        <a href="./login.html"  id="sign-in">sign in</a>
+     </div>
+    </button>
+    <button type="button" class="d-secondaryButton" id="log-button">
+    <div>
+      <a id="log-in" class="insert" href="./login-2.html">log in</a>
+    </div>
+    </button>
+    <button type="button" class="d-secondaryButton" id="logout-button">
+    <div>
+      <a id="log-out" onclick="signOut()">log out</a>
+    </div>
+    </button>
+  </header>
+
+  <h1>APP 등록하기</h1>
+  <div class="topcontainer">
+    <div class="container">
+      <div class="flexCls">
+        Category<br>
+        <select name="category" id="category">
+								<option value ="all" selected disabled>category</option>
+								<option value="delivery">delivery</option>
+								<option value="realstate">realstate</option>
+								<option value="restaurant">restaurant</option>
+								<option value="tour">tour</option>
+								<option value="transport">transport</option>
+							</select>
+      </div>
+      <div class="flexCls">
+        App Name
+        <input type="text" id="app_name" placeholder="Ex) All For">
+      </div>
+      <div class="flexCls">
+        App Image URL
+        <input type="text"  id="img_url" placeholder="구글 플레이 스토어에 등록 된 페이지에 있는 대표 앱 이미지의 주소를 복사해서 작성.">
+      </div>
+      <div class="flexCls">
+        Download URL
+        <input type="text"  id="download_url" placeholder="Ex) https://play.google.com/store/apps/details?id=com.sampleapp 에서 id= 뒷 부분을 입력해 주세요. ">
+      </div>
+      <div class="flexCls">
+        Introduced in Korean <br>
+        <textarea id="Korean" name="Korean"placeholder="간단하게 한줄만 적어주세요."></textarea>
+      </div>
+      <div class="flexCls">
+        Introduced in English <br>
+        <textarea id="English" name="English" placeholder="간단하게 한줄만 적어주세요."></textarea>
+      </div>
+      <div class="flexCls">
+        Introduced in Chinese <br>
+        <textarea id="Chinese" name="Chinese" placeholder="간단하게 한줄만 적어주세요."></textarea>
+      </div>
+      <div class="flexCls">
+        Introduced in Japanese <br>
+        <textarea id="Japanese" name="Japanese" placeholder="간단하게 한줄만 적어주세요."></textarea></div>
+
+        <div class="flexCls">
+         <a class="checkbox">English</a>
+          <input id="English_img" type='file' multiple="multiple"  name="filename[]" accept='image/*'>
+        </div>
+        <div class="flexCls">
+           <a class="checkbox">中国語</a>
+          <input id="Chinese_img" type='file' multiple="multiple"  name="filename[]" accept='image/*'>
+        </div>
+        <div class="flexCls">
+        <a class="checkbox">日本語</a>
+          <input id="Japanese_img" type='file' multiple="multiple"  name="filename[]" accept='image/*'>
+        </div>
+
+      <div class="flexCls">
+        다국어 지원 여부<br>
+        <div class="lang">
+          <form name="other_lang">
+            <input type="checkbox" class="checkbox1" id="한국어" name="other_lang1">
+            <a class="checkbox">한국어</a>
+            <input type="checkbox" class="checkbox1" id="English" name="other_lang2">
+            <a class="checkbox">English</a>
+            <input type="checkbox" class="checkbox1" id="日本語" name="other_lang3">
+            <a class="checkbox">日本語</a>
+            <input type="checkbox" class="checkbox1" id="中国語" name="other_lang4">
+            <a class="checkbox">中国語</a>
+          </form>
+        </div>
+      </div>
+      <!—register button —>
+      <div class="button_div">
+        <button class="bottom_button" onclick="Register()">Register</button>
+        <button class="bottom_button" onclick="backing()">Back</button>
+      </div>
+    </div>
+  </div>
+   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="//www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+        <script src="../firebase/init.js"></script>
+        <script src="./index.js"></script>
+</body>
+</html>
+<style>
+  body {
+    margin: 0;
+    background-color: #e8e6fc;
+    position: relative;
+  }
+
+  header {
+    height: 1em;
+    background-color: #96a8f4;
+    padding: 15px;
+  }
+
+  h1 {
+    color: gray;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .topcontainer {
+    width: 700px;
+    display: flex;
+    flex-flow: row;
+    position: relative;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    margin-left: -360px;
+    padding: 15px;
+    box-shadow: 1px 4px 4px gray;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    flex-flow: column nowrap;
+    font-weight: bold;
+    padding: 10px;
+
+  }
+
+  .flexCls {
+    margin: 10px 0;
+    width: 100%;
+    flex: 0 1 auto;
+  }
+
+  select {
+    height: 35px;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  input[type=text] {
+    height: 35px;
+    width: 100%;
+    background-color: #fbfbfb;
+    opacity: 0.5;
+    border: 1px solid #dbdbdb;
+    margin: 5px 0;
+  }
+
+  textarea {
+    height: 60px;
+    width: 100%;
+    background-color: #fbfbfb;
+    opacity: 0.5;
+    border: 1px solid #dbdbdb;
+    margin: 5px 0;
+  }
+
+  input[type=text]:focus {
+    background-color: inherit;
+    opacity: 1;
+  }
+
+  textarea:focus {
+    background-color: inherit;
+    opacity: 1;
+  }
+
+  .lang {
+    background-color: #fbfbfb;
+    border: 1px solid #dbdbdb;
+    font-size: 10px;
+    padding: 10px;
+    margin: 5px 0;
+  }
+
+  .button_div {
+    padding: 20px;
+    margin: auto;
+  }
+
+  .bottom_button {
+    width: 60px;
+    height: 30px;
+    margin: 10px;
+  }
+  #log-button{
+  color: black;
+  }
+</style>
