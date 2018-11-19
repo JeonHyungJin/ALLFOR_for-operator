@@ -65,9 +65,8 @@ h1{
 }
 #center{
   text-align: center;
-  padding: 6em 0 4em 0;
+  padding:;
   margin-left: 25%;
-	height: 600px;
 }
 #center h1 {
   color: rgba(255, 255, 255, 0.65);
