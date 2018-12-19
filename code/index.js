@@ -237,7 +237,7 @@ function Register(){
 		console.log(user);
 		userRef.set(data);
 			
-		alert("스케줄 등록 성공!");
+		alert("어플리케이션 등록 성공!");
 	});
 }
 	//sign up 하는 함수 
